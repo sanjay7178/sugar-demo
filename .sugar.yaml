@@ -49,7 +49,7 @@ profiles:
     project-name: complex-app-prod
     config-path:
       - compose/base.yaml
-      - compose/production.yaml
+      - compose/prod/production.yaml
     env-file: 
       - .env
       - compose/.env.prod
