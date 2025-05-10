@@ -1,0 +1,68 @@
+backend: compose
+env-file: .env
+defaults:
+  profile: "${{ env.ENV_PROFILE }}"
+  project-name: "complex-app-${{ env.ENV_PROJECT }}"
+profiles:
+  development:
+    project-name: complex-app-dev
+    config-path:
+      - compose/base.yaml
+      - compose/development.yaml
+    env-file: 
+      - .env
+      - .env.dev
+    services:
+      default:
+        - api
+        - database
+        - cache
+      available:
+        - name: api
+        - name: database
+        - name: cache
+        - name: worker
+        - name: monitoring
+
+  staging:
+    project-name: complex-app-staging
+    config-path:
+      - compose/base.yaml
+      - compose/staging.yaml
+    env-file: 
+      - .env
+      - .env.staging
+    services:
+      default:
+        - api
+        - database
+        - cache
+        - worker
+      available:
+        - name: api
+        - name: database
+        - name: cache
+        - name: worker
+        - name: monitoring
+
+  production:
+    project-name: complex-app-prod
+    config-path:
+      - compose/base.yaml
+      - compose/production.yaml
+    env-file: 
+      - .env
+      - compose/.env.prod
+    services:
+      default:
+        - api
+        - database
+        - cache
+        - worker
+        - monitoring
+      available:
+        - name: api
+        - name: database
+        - name: cache
+        - name: worker
+        - name: monitoring
