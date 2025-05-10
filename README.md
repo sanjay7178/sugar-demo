@@ -21,6 +21,18 @@ start specific services
 sugar  --profile production compose-ext start --services api,worker
 ```
 
+stop stop specific services 
+```bash
+sugar  --profile production compose-ext start --services worker
+```
+
+check logs for specific services 
+```bash
+sugar  --profile production compose-ext logs --services api --options "--tail 10"
+```
+
+chec
+
 rebuild only certain services
 ```bash
 sugar build --profile production --services api,database,cache --options "--no-cache"

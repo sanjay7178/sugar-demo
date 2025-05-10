@@ -2,12 +2,11 @@ version: "3.8"
 
 services:
   api:
-    image: nginx:${TAG:-latest}
+    build:
+      context: ../services/api
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000"
-    # build:
-    #   context: ./services/api
-    #   dockerfile: Dockerfile
+      - "8082:8081"
     depends_on:
       - database
       - cache
@@ -24,7 +23,7 @@ services:
   worker:
     image: nginx:${TAG:-latest}
     ports:
-      - "80:80"
+      - "8081:80"
     # build:
     #   context: ./services/worker
     #   dockerfile: Dockerfile
