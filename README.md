@@ -42,8 +42,10 @@ swarm operations
 
 ```bash
 # Deploy stack to swarm
-sugar --profile production swarm deploy --stack complex-app 
+sugar --profile development swarm deploy --stack complex-app 
+```
 
-# Scale services
-sugar swarm node --update worker --options "--replicas 5"
+remove the swarm stack 
+```bash
+sugar --profile development swarm rm --stack complex-app
 ```

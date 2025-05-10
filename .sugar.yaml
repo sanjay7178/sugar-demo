@@ -7,11 +7,11 @@ profiles:
   development:
     project-name: complex-app-dev
     config-path:
-      - compose/base.yaml
-      - compose/development.yaml
+      # - compose/base.yaml
+      - compose/dev/development.yaml
     env-file: 
       - .env
-      - .env.dev
+      - compose/dev/.env.dev
     services:
       default:
         - api
