@@ -15,15 +15,25 @@ create and start all services
 ```bash
  sugar --profile production  compose up  
 ```
+execute commands
+```bash
+sugar exec --services database --cmd "psql -U postgres -c 'SELECT version();'"
+```
+
 start specific services
 
 ```bash
 sugar  --profile production compose-ext start --services api,worker
 ```
 
+monitor resources for api and worker services even in swarm cluster
+```bash
+sugar stats plot --services api,worker 
+```
+
 stop stop specific services 
 ```bash
-sugar  --profile production compose-ext start --services worker
+sugar  --profile production compose-ext stop --services worker
 ```
 
 check logs for specific services 
@@ -31,11 +41,10 @@ check logs for specific services
 sugar  --profile production compose-ext logs --services api --options "--tail 10"
 ```
 
-chec
 
 rebuild only certain services
 ```bash
-sugar build --profile production --services api,database,cache --options "--no-cache"
+sugar --profile production  build --services api,database,cache --options "--no-cache"
 ```
 
 swarm operations
