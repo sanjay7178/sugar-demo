@@ -52,7 +52,7 @@ profiles:
       - compose/prod/production.yaml
     env-file: 
       - .env
-      - compose/.env.prod
+      - compose/prod/.env.prod
     services:
       default:
         - api

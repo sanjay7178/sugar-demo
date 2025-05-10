@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   api:
     deploy:
@@ -13,7 +11,7 @@ services:
         delay: 10s
         order: start-first
       restart_policy:
-        condition: any
+        condition: on-failure
         max_attempts: 3
     ports:
       - "8000:8000"
@@ -26,7 +24,7 @@ services:
           cpus: '1'
           memory: 1G
       restart_policy:
-        condition: any
+        condition: on-failure
         max_attempts: 3
 
   database:
@@ -61,3 +59,4 @@ networks:
   backend:
     driver: overlay
     internal: true
+    attachable: true
